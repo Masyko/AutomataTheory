@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\main">
+      <UniqueIdentifier>{3a90dea8-0b1e-4152-a55b-bbf2f4779e85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Generator">
+      <UniqueIdentifier>{df263438-16dd-4943-8d35-d41523cc477a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Generator\Object">
+      <UniqueIdentifier>{df682992-7ab9-4615-b872-4c59e7fd3df5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Generator\Object\geo">
+      <UniqueIdentifier>{af8d5a3a-112a-4bc8-9b65-c6d2ab157d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Generator\Object\Distance">
+      <UniqueIdentifier>{fef90318-4f3d-4bf0-a934-6f7955b6753e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Generator\Object\Latitude">
+      <UniqueIdentifier>{89e088ef-c33d-48ea-9ca4-72a32cfd496d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Generator\Object\Longitude">
+      <UniqueIdentifier>{a79e68da-3110-475d-84e8-281855eb2548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Generator\Object\Height">
+      <UniqueIdentifier>{9f1298ce-facd-4e0b-b114-72782c5a7095}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\RegExAnalyzer">
+      <UniqueIdentifier>{0938bddf-4fcc-431b-9013-0253bf16477c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Analyzer">
+      <UniqueIdentifier>{0a091de0-d264-4794-b7da-99dfc5a701b3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Generator\Object\Object.h">
+      <Filter>Исходные файлы\Generator\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator\Generator.h">
+      <Filter>Исходные файлы\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator\Object\geo\geo.h">
+      <Filter>Исходные файлы\Generator\Object\geo</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator\Object\Distance\Distance.h">
+      <Filter>Исходные файлы\Generator\Object\Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator\Object\Height\Height.h">
+      <Filter>Исходные файлы\Generator\Object\Height</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator\Object\Longitude\Longitude.h">
+      <Filter>Исходные файлы\Generator\Object\Longitude</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator\Object\Latitude\Latitude.h">
+      <Filter>Исходные файлы\Generator\Object\Latitude</Filter>
+    </ClInclude>
+    <ClInclude Include="RegExAnalyzer\RegExAnalyzer.h">
+      <Filter>Исходные файлы\RegExAnalyzer</Filter>
+    </ClInclude>
+    <ClInclude Include="Analyzer\Analyzer.h">
+      <Filter>Исходные файлы\Analyzer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main\main.cpp">
+      <Filter>Исходные файлы\main</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator\Generator.cpp">
+      <Filter>Исходные файлы\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator\Object\geo\geo.cpp">
+      <Filter>Исходные файлы\Generator\Object\geo</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator\Object\Distance\Distance.cpp">
+      <Filter>Исходные файлы\Generator\Object\Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator\Object\Height\Height.cpp">
+      <Filter>Исходные файлы\Generator\Object\Height</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator\Object\Longitude\Longitude.cpp">
+      <Filter>Исходные файлы\Generator\Object\Longitude</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator\Object\Latitude\Latitude.cpp">
+      <Filter>Исходные файлы\Generator\Object\Latitude</Filter>
+    </ClCompile>
+    <ClCompile Include="Analyzer\Analyzer.cpp">
+      <Filter>Исходные файлы\Analyzer</Filter>
+    </ClCompile>
+    <ClCompile Include="RegExAnalyzer\RegExAnalyzer.cpp">
+      <Filter>Исходные файлы\RegExAnalyzer</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

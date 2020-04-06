@@ -1,0 +1,3 @@
+﻿  main.cpp
+D:\Automata Theory\Analyzer\Analyzer\Generator\Object\Object.h(13,1): warning C4267: return: преобразование из "size_t" в "char"; возможна потеря данных
+  Analyzer.vcxproj -> D:\Automata Theory\Analyzer\Debug\Analyzer.exe
