@@ -12,11 +12,11 @@ void RegExAnalyzer::analyze()
 	{
 		open_files();
 
-		regex Geolocation_regex ("(geo\\:)((\\-?)([0-9]+)(\\.?)([0-9]+))(\\,)((\\-?)([0-9]+)(\\.?)([0-9]+))((\\,)([0-9]+))?((\\;u\\=)([0-9]+))?");
+		regex Geolocation_regex ("(geo\\:)((\\-?)(0*)([0-8]{1,2}|[8][9]|[9][0])(\\.?)([0-9]{0,4}))(\\,)((\\-?)(0*)([0-9]{1,2}|[1-9]|[1][0-7][0-9]|[1][8][0])(\\.?)[0-9]{0,4})((\\,)([0-9]{0,3})?((\\;u\\=[0-9]{0,3})))?");
 		cmatch Result;
 		string tmp_str;
 
-		map<size_t, vector<pair<double, double>>> height_using; //высоота(ключ),координаты(широта и долгота)
+		map<size_t, vector<pair<double, double>>> height_using; //высота(ключ),координаты(широта и долгота)
 
 		size_t latitude_index = 2;
 		size_t latitude_low_limit = -90;
@@ -38,16 +38,16 @@ void RegExAnalyzer::analyze()
 				string longitude_str(Result[longitude_index]);
 				istringstream longitude_ss(longitude_str);
 				longitude_ss >> longitude;
-				if (latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180) {
+				/*if (latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180) {*/
 					_output_file << tmp_str << " - BINGO!" << endl;
-
 					size_t height = 0;
+
 					if (Result[height_index].matched) {
 						height = stoi(Result[height_index]);
 					}
 					
 					auto key_it = height_using.find(height);
-					if (key_it != height_using.end()) {
+					if (key_it != height_using.end()) { //если ключ используется снова(высота такая же, что уже была)
 						auto& vec = key_it->second; //переменная вектора  которая хранится в паре с ключом
 						vec.push_back({ latitude, longitude }); // записываем координаты к высоте
 
@@ -60,10 +60,10 @@ void RegExAnalyzer::analyze()
 					_output_file << tmp_str << " - not suitable" << endl;
 				}
 			}
-			else {
+			/*else {
 				_output_file << tmp_str << " - not suitable" << endl;
 			}
-		}
+		}*/
 		
 		for (auto&& h : height_using) { //рассматриваем ту же пару но уже разименованную
 			auto& height = h.first;
