@@ -4,27 +4,32 @@
 #include <fstream>
 #include <string>
 #include <iostream>
-using namespace std;
+#include <vector>
+#include <chrono>
+
 class Analyzer
 {
 protected:
-	string _name;
-	string _input_file_path;
-	string _output_file_path;
-	string _height_file_path;
-	ifstream _input_file;
-	ofstream _output_file;
-	ofstream _height_file;
+	std::string _name;
+	std::string _input_file_path;
+	std::string _output_file_path;
+	std::string _heights_file_path;
+	std::ofstream _output_file;
+	std::ofstream _heights_file;
+	std::ifstream _input_file;
+	std::vector<size_t> _times;
 protected:
 	void open_files();
 	void close_files();
 public:
+    const std::vector<size_t>& get_times() {return _times;}
+public:
 	Analyzer(
-		string __name,
-		string __input_file_path,
-		string __output_file_path,
-		string __height_file_path
-	);
-	virtual void analyze() = 0;
+		std::string __name,
+		std::string __input_file_path,
+		std::string __output_file_path,
+		std::string __heights_file_path);
+	~Analyzer();
+	virtual void analyze() noexcept = 0;
 };
 #endif

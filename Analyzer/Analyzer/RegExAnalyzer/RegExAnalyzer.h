@@ -1,16 +1,17 @@
 #pragma once
-#ifndef REGEXANALYZER_H
-#define REGEXANALYZER_H
+#ifndef _REGEXANALYZER_H__
+#define _REGEXANALYZER_H__
 #include "../Analyzer/Analyzer.h"
-#include <sstream>
 #include <regex>
-using namespace std;
+
 class RegExAnalyzer : public Analyzer
 {
 public:
-	RegExAnalyzer(std::string __input_file_path = "Generator\\Output\\Output.txt",
-		std::string __output_file_path = "RegExAnalyzer\\Output\\Output.txt", 
-		std::string __height_file_path = "RegExAnalyzer\\Output\\Height.txt" );
-	virtual void analyze() override;
+	RegExAnalyzer(
+		std::string __input_file_path, 
+		std::string __output_file_path = "../RegExAnalyzer/Output/RegExResults.txt",
+		std::string __heights_file_path = "../RegExAnalyzer/Output/Heights.txt");
+	~RegExAnalyzer();
+	virtual void analyze() noexcept override;
 };
-#endif // !REGEXANALYZER_H
+#endif

@@ -1,34 +1,50 @@
 #include "Analyzer.h"
-using namespace std;
+
+
+
+Analyzer::Analyzer(std::string __name, std::string __input_file_path, std::string __output_file_path, std::string __heights_file_path) :
+	_name(__name),
+	_input_file_path(__input_file_path),
+	_output_file_path(__output_file_path),
+    _heights_file_path(__heights_file_path)
+{}
+
+Analyzer::~Analyzer()
+{}
+
 void Analyzer::open_files()
 {
 	_input_file.open(_input_file_path);
 	if (!_input_file.is_open()) {
-		throw invalid_argument(_name + " : Input file is not open");
+		throw std::invalid_argument((_name + ": Input file is not open (ERROR)").c_str());
 	}
-	cout << _name << " : Input file is open" << endl;
-	_output_file.open(_output_file_path, ios_base::trunc/*очистить файл при открытии*/);
+	std::cout << _name << ": Input file opened" << std::endl;
+
+	_output_file.open(_output_file_path, std::ios_base::trunc);
 	if (!_output_file.is_open()) {
-		throw invalid_argument(_name + " : Output file is not open");
+		throw std::invalid_argument((_name + ": Output file is not open (ERROR)").c_str());
 	}
-	cout << _name << " : Output file is open" << endl;
-	_height_file.open(_height_file_path, ios_base::trunc/*очистить файл при открытии*/);
-	if (!_height_file.is_open()) {
-		throw invalid_argument(_name + " : Height file is not open");
+	std::cout << _name << ": Output file opened" << std::endl;
+
+    _heights_file.open(_heights_file_path, std::ios_base::trunc);
+	if (!_output_file.is_open()) {
+		throw std::invalid_argument((_name + ": Heights output file is not open (ERROR)").c_str());
 	}
-	cout << _name << " : Height file is open" << endl;
+	std::cout << _name << ": Heights output file opened" << std::endl;
 }
 
 void Analyzer::close_files()
 {
-	if (_input_file.is_open()) { _input_file.close(); cout << _name << " : Input file is closed" << endl; }
-	if (_output_file.is_open()) { _output_file.close(); cout << _name << " : Output file is closed" << endl; }
-	if (_height_file.is_open()) { _height_file.close(); cout << _name << " : Height file is closed" << endl; }
+	if (_input_file.is_open()) {
+		_input_file.close();
+		std::cout << _name << ": Input file closed" << std::endl;
+	}
+	if (_output_file.is_open()) {
+		_output_file.close();
+		std::cout << _name << ": Output file closed" << std::endl;
+	}
+	if (_heights_file.is_open()) {
+        _heights_file.close();
+		std::cout << _name << ": Heights output file closed" << std::endl;
+	}
 }
-
-Analyzer::Analyzer(std::string __name, std::string __input_file_path, std::string __output_file_path, std::string __height_file_path) :
-	_name(__name),
-	_input_file_path(__input_file_path),
-	_output_file_path(__output_file_path),
-	_height_file_path(__height_file_path)
-{}

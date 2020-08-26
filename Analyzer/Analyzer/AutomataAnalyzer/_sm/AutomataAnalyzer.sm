@@ -1,0 +1,116 @@
+%header AutomataAnalyzer
+%class AutomataAnalyzer
+%package Automata_Analyzer
+%start MainMap::Height
+%map MainMap
+%%
+
+Geo
+{
+	letter (symbol : char) Geo {Pick_up_symbol(symbol);}
+	colon [ctxt.is_geo()] Colon {ClearTempStr();}
+}
+
+Colon
+{
+	number(symbol : char) Latitude {Pick_up_symbol(symbol);}
+}
+
+Latitude
+{
+	number (symbol : char) Latitude {Pick_up_symbol(symbol);}
+	dot (symbol : char) DotInLatitude {Pick_up_symbol(symbol);}
+	comma [ctxt.is_in_range_latitude()] CommaAfterLatitude {Save_latitude(); ClearTempStr();}
+}
+
+DotInLatitude
+{
+	number (symbol : char) LatitudeContinueAfterDot {Pick_up_symbol(symbol);}
+}
+
+LatitudeContinueAfterDot
+{
+	number (symbol : char) LatitudeContinueAfterDot {Pick_up_symbol(symbol);}
+	comma [ctxt.is_in_range_latitude()] CommaAfterLatitude {Save_latitude(); ClearTempStr();}
+}
+
+CommaAfterLatitude
+{
+	number (symbol : char) Longitude {Pick_up_symbol(symbol);}
+}
+
+Longitude
+{
+	number (symbol : char) Longitude {Pick_up_symbol(symbol);}
+	dot (symbol : char) DotInLongitude {Pick_up_symbol(symbol);}
+	comma [ctxt.is_in_range_longitude()] CommaAfterLongitude {Save_longitude(); ClearTempStr();}
+	semicolon [ctxt.is_in_range_longitude()] Semicolon {Save_longitude(); ClearTempStr(); Save_height_zero();}
+	eos [ctxt.is_in_range_longitude()] Success {Save_longitude(); ClearTempStr(); Save_height_zero(); Acceptable();}
+}
+
+DotInLongitude
+{
+	number (symbol : char) LongitudeContinueAfterDot {Pick_up_symbol(symbol);}
+}
+
+LongitudeContinueAfterDot
+{
+	number (symbol : char) LongitudeContinueAfterDot {Pick_up_symbol(symbol);}
+	comma [ctxt.is_in_range_longitude()] CommaAfterLongitude {Save_longitude(); ClearTempStr();}
+	semicolon [ctxt.is_in_range_longitude()] Semicolon {Save_longitude(); ClearTempStr(); Save_height_zero();}
+	eos [ctxt.is_in_range_longitude()] Success {Save_longitude(); ClearTempStr(); Save_height_zero(); Acceptable();}
+}
+
+CommaAfterLongitude
+{
+	number (symbol : char) Height {Pick_up_symbol(symbol);}
+}
+
+Height
+{
+	number(symbol : char) Height {Pick_up_symbol(symbol);}
+	semicolon Semicolon {Save_height(); ClearTempStr();}
+	eos Success {Save_height(); ClearTempStr();}
+}
+
+Semicolon
+{
+	letter (symbol : char) Semicolon {Pick_up_symbol(symbol);}
+	equal [ctxt.is_u()] Equal {ClearTempStr();}
+}
+
+Equal
+{
+	number (symbol : char) Distance {}
+}
+
+Distance
+{
+	number (symbol : char) Distance {}
+	eos Success {Acceptable();}
+}
+
+Error
+Entry {ClearStorageList(); ResetFSM(); ClearTempStr();}
+{
+	eos Geo {}
+}
+
+Success
+Entry{AddStorageList(); ClearStorageList(); ResetFSM(); ClearTempStr();}
+{}
+
+Default
+{
+	letter (symbol : char) Error {Unacceptable();}
+	number (symbol : char) Error {Unacceptable();}
+	equal Error {Unacceptable();}
+	colon Error {Unacceptable();}
+	eos Error {Unacceptable();}
+	semicolon Error {Unacceptable();}
+	comma Error {Unacceptable();}
+	dot(symbol : char) Error {Unacceptable();}
+	error Error {Unacceptable();}
+	begin Geo {}
+}
+%%
