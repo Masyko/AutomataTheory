@@ -1,7 +1,7 @@
 %header AutomataAnalyzer
 %class AutomataAnalyzer
 %package Automata_Analyzer
-%start MainMap::Height
+%start MainMap::Geo
 %map MainMap
 %%
 
